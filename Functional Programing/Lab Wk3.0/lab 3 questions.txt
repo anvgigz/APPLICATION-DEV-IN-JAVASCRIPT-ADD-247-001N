@@ -1,0 +1,75 @@
+/*
+Task 1.1 Create Different Types of Functions.js
+        Which function type is the shortest to write?
+1)  Shortest to write: calculateArea3 (arrow function).
+        What happens if you try to call calculateArea2 before it's defined?
+2)  Calling calculateArea2 before it's defined: You'll get a ReferenceError because function expressions are not hoisted.
+        Which function type would you use for a simple calculation?
+3)  Best for simple calculations: Arrow functions (calculateArea3) — concise and readable.
+
+*/
+
+/*
+Task 1.2 Hoisting Experiment.js
+    What error message do you get for the notHoisted function?
+Error message for notHoisted: ReferenceError: Cannot access 'notHoisted' before initialization
+    Why does the hoistedFunction work but notHoisted doesn't?
+Why the difference? Function declarations are hoisted with their definitions. Function expressions are hoisted only as variables, not with their function bodies.
+    When would you prefer to use function declarations vs expressions?
+When to use each:
+Use function declarations when you need hoisting or want to define reusable logic.
+Use function expressions for inline or scoped logic, especially in callbacks or closures.
+*/
+
+
+
+
+
+Task 2.1 Functions as Parameters.js
+const power = (a, b) => a ** b;
+const modulo = (a,b) => a % b;
+console.log(performOperation(power, 2, 3)); // Output: 8
+console.log(performOperation(modulo,10,3)); //Output: 1
+
+
+/*
+Task 2.2 Functions Returning Functions.js
+    What type of function is createGreeter?
+Type of createGreeter: Higher-order function.
+    What type of function does createGreeter return?
+Type it returns: Anonymous function (closure).
+    How many parameters does the returned function take?
+Parameters of returned function: One (name).
+*/
+
+Task 3.1 Create a Curried Function.js
+const curriedTriangleArea = base => height => (base * height) / 2;
+console.log(curriedTriangleArea(10)(5)); // Output: 25
+
+/*
+Task 4.1 Create a Counter with IIFE.js
+    Why can't you access counter.count directly?
+Why counter.count is undefined: count is private inside the IIFE closure.
+    What would happen if you created a second counter?
+Creating a second counter: It would have its own independent count variable.
+    How is this different from using a global variable?
+Difference from global variable: Global variables are shared and mutable across the app; closures encapsulate state privately.    
+*/
+
+
+Task 5.1 Convert to Pointfree Style.js
+const isGreaterThan3 = x => x > 3;
+
+// Pointfree-style transformation
+const filteredAndDoubled = numbers.filter(isGreaterThan3).map(double);
+
+
+console.log(filteredAndDoubled); // Output: [8, 10]
+
+
+
+Task 6.1 Build a Simple Calculator.js
+power: (a, b) => a ** b,
+    modulo: (a, b) => a % b
+console.log(calculator.calculate("power", 2, 3)); // Output: 8
+console.log(calculator.calculate("modulo", 10, 3)); // Output: 1

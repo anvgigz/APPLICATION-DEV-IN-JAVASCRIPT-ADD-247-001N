@@ -1,0 +1,5 @@
+Important Distinction:
+
+Pure functions: No side effects + same output for same input
+Idempotent functions: Can be called multiple times with same result, but may have side effects
+Example: A REST API PUT request is idempotent (calling it twice has the same effect as calling it once), but it still modifies a database - a side effect.

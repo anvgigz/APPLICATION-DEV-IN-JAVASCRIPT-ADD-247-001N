@@ -1,0 +1,54 @@
+
+
+cd to the file locaiton and start the node server
+
+"C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing"
+
+node "functional programing.js"
+
+
+in new cmd browser cd to the file locatoin (((EXAMPLE)))
+
+cd C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing
+
+\addyourworking dir for your files
+
+run the main file
+
+node index.js
+
+
+
+see code output
+
+
+C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing\Chapter 1 Once and OnceAndAfter\Lab Wk2>npm install -g http-servercd C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing\Chapter 1 Once and OnceAndAfter\Lab Wk2
+npm error code ENOENT
+npm error syscall open
+npm error path C:\Users\stephen\Desktop\APPLICATION\package.json
+npm error errno -4058
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open 'C:\Users\stephen\Desktop\APPLICATION\package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: C:\Users\stephen\AppcmData\Local\npm-cache\_logs\2025-08-31T19_23_10_403Z-debug-0.log
+
+C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing\Chapter 1 Once and OnceAndAfter\Lab Wk2>cd C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing\Chapter 1 Once and OnceAndAfter\Lab Wk2
+
+C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing\Chapter 1 Once and OnceAndAfter\Lab Wk2>
+C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing\Chapter 1 Once and OnceAndAfter\Lab Wk2>node index.js
+Function called with: First call
+SUCCESS: user data
+WARNING: Already processed user data
+WARNING: Already processed user data
+Message: First
+Message: Second
+Message: Third
+Limit reached: Function can only be called 3 times.
+Limit reached: Function can only be called 3 times.
+Cart total calculated: 1029.98
+Processing payment of $1029.98
+Payment successful!
+WARNING: Payment of $1029.98 already processed.
+WARNING: Payment of $1029.98 already processed.
+
+C:\Users\stephen\Desktop\APPLICATION DEV IN JAVASCRIPT ADD-247-001N\Functional Programing\Chapter 1 Once and OnceAndAfter\Lab Wk2>

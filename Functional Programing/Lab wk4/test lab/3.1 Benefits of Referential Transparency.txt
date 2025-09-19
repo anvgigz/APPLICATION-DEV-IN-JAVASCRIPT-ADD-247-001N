@@ -1,0 +1,4 @@
+Optimization: Compilers can replace function calls with their results
+Reasoning: Easier to understand and debug code
+Testing: Functions can be tested in isolation
+Parallelization: Functions can be executed in any order

@@ -1,0 +1,12 @@
+4. Understanding Side Effects
+Side effects are changes that occur outside the function during its execution. They make functions impure and harder to reason about.
+
+4.1 Common Side Effects in JavaScript
+Modifying global variables: window.userCount = 5;
+Changing function arguments: array.push(item);
+Console output: console.log("Hello");
+DOM manipulation: document.getElementById("title").innerHTML = "New Title";
+API calls: fetch("https://api.example.com/data");
+File system operations: fs.writeFile("file.txt", "content");
+Random numbers: Math.random();
+Date/time functions: new Date();

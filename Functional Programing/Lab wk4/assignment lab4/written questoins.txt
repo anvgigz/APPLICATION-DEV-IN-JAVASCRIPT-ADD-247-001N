@@ -1,0 +1,178 @@
+Task 1.1: Analyze Function Purity
+For each function below, determine if it's pure or impure. Explain your reasoning.
+
+Questions to Answer:
+
+Which functions are pure? Why?
+
+Function #1: add(a, b)
+This is a textbook example of a pure function. 
+It takes two inputs and always returns the same output for those inputs.
+No matter how many times you call add(2, 3), it will always return 5. 
+It doesn’t rely on or change anything outside of itself—no global variables, 
+no system state, no side effects. That predictability is exactly what makes it pure.
+
+Function #4: calculateArea(width, height)
+This function is also pure. It simply multiplies two numbers and returns the result. 
+Like the add function, it doesn’t touch anything outside its scope, 
+and it doesn’t change any external state. If you give it the same width and height, 
+it will always return the same area. That consistency is key to purity.
+
+Function #6: formatName(firstName, lastName)
+This function takes two strings and returns a formatted full name. 
+It doesn’t log anything, change any variables, or depend on external data. 
+It’s predictable and self-contained. If you pass in "John" and "Doe", 
+you’ll always get "John Doe". That makes it pure.
+
+
+Which functions are impure? What makes them impure?
+
+Function #2: incrementCounter()
+This function is impure because it modifies a global variable (counter). 
+Every time you call it, the result changes—even if you don’t change the input 
+(in this case, there’s no input at all). It has a side effect: 
+it alters the program’s state. That breaks determinism and makes it impure.
+
+Function #3: getCurrentTime()
+This function is impure because it depends on the system clock. 
+Every time you call it, 
+you get a different result—even though the input is always the same (none). 
+It violates determinism because the output changes based on when it’s called. 
+It also has a hidden dependency: the current time.
+
+Function #5: logMessage(message)
+Even though this function returns a consistent value (true), 
+it’s impure because it logs something to the console. 
+That’s a side effect—it interacts with the outside world. 
+Pure functions don’t do that. Logging, writing to files, 
+or modifying the DOM are all examples of side effects.
+
+Function #7: updateUser(user)
+This function mutates the input object by adding a lastLogin timestamp. 
+That’s a side effect because it changes the original object. 
+Pure functions should never modify their inputs—they should return new values instead. 
+Also, since it uses new Date(), the output changes every time, breaking determinism.
+
+Function #8: getRandomNumber()
+This one’s clearly impure. It returns a different number every time you call it, 
+even though the input is always the same (none). 
+It relies on a random number generator, which is inherently non-deterministic. 
+That unpredictability makes it impure.
+
+
+For impure functions, what side effects do they have?
+
+Side Effects: Functions #2, #5, and #7 
+change the environment—either by modifying variables, 
+logging output, or mutating objects.
+
+
+Which functions violate determinism (same input, different output)?
+
+Functions #3, #7, and #8 
+return different results each time due to time or randomness.
+
+
+Task 3.1: Demonstrate Referential Transparency
+Show how pure functions can be replaced with their results.
+
+Questions to Answer:
+
+Why can we replace function calls with their results?
+
+pure functions always return the same output for the same input 
+and have no side effects. 
+This predictability means we can safely substitute a 
+function call with its result without changing the behavior of the program.
+
+
+What would happen if we tried this with an impure function?
+
+Impure functions rely on or modify external state, 
+so replacing them with a fixed result could lead to incorrect behavior.
+
+
+How does referential transparency help with optimization?
+
+- Memoization: Storing results of function calls to avoid redundant computation.
+- Parallelization: Running pure functions in parallel without worrying about shared state.
+- Simplified debugging: Easier to trace and test because behavior is predictable.
+- Compiler optimizations: Compilers can safely inline or reorder pure function calls for performance gains.
+In short, referential transparency makes code more reliable, testable, and efficient
+
+
+Task 6.1: Build a Shopping Cart System
+Create a shopping cart system using pure functions.
+
+
+Questions to Answer:
+
+Why are these shopping cart functions pure?
+
+These functions are pure because they:
+- Do not modify external state (e.g., they don’t change the original cart array).
+
+- Always return the same output for the same input.
+
+- Have no side effects—they don’t log, mutate, or interact with anything outside 
+their scope.
+
+
+What would happen if we used array.push() instead of spread operator?
+
+Using push() would mutate the original array, making the function impure.
+- Side effects: The original cart is changed, which can lead to bugs if other 
+parts of the program rely on its previous state.
+
+- Loss of predictability: You can’t guarantee the same output for the same input 
+because the input itself gets altered.
+
+- Harder to test and debug: You’d need to track changes across shared state, 
+which complicates reasoning.
+
+
+
+How does this approach compare to a traditional object-oriented shopping cart?
+
+Feature:                  Pure Functional Approach                     Object-Oriented Approach
+State Management:         Immutable (returns new state)               Mutable (state lives inside objects)
+Testing:                  Easier—functions are isolated               Harder—requires setup and teardown
+Debugging:                Predictable—no hidden side effects          Can be unpredictable due to shared state
+Reusability:              High—functions are composable               Lower—methods tied to specific classes
+Concurrency Safety:       Safer—no shared mutable state               Riskier—requires careful synchronization
+Framework Integration:    Ideal for React/Redux                       Common in traditional MVC/class-based systems
+
+In short, the pure functional approach is ideal for building predictable, 
+scalable systems—especially in environments like React or Redux where immutability and state isolation are key.
+
+
+
+Bonus Challenge
+Advanced: Memoization
+
+Extra Credit: Why does memoization only work with pure functions?
+
+Memoization relies on the assumption that the same inputs will always produce the same outputs.
+That’s the defining trait of a pure function
+
+Characteristics of Pure Functions:
+- Deterministic: Given the same inputs, they always return the same output.
+- No Side Effects: They don’t modify external state (e.g., global variables, DOM, files).
+- Self-contained: Their behavior depends only on their input parameters.
+
+Memoization is like a smart filing cabinet: it labels each drawer with the input and stores the result inside. 
+But if the function is impure, the label might not match what’s actually inside—or worse, the contents might change without warning.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Reflection: A brief paragraph about what you learned and which concepts were most challenging
+
+Through this exercise, I gained a deeper understanding of the distinction between pure and impure functions in JavaScript. 
+I learned that pure functions always produce the same output for the same input and have no side effects, 
+which makes them predictable and easier to test. 
+Concepts like referential transparency and dependency injection helped reinforce the importance of writing maintainable and testable code. 
+The most challenging part was identifying subtle side effects in impure functions, 
+such as modifying external state or relying on system time or randomness. 
+Converting impure functions to pure ones required careful restructuring to eliminate dependencies, 
+which was both enlightening and rewarding.

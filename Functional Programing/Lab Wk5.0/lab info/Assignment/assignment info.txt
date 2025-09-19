@@ -1,0 +1,80 @@
+Lab Exercise: Declarative Programming with Higher-Order Functions
+Lab Overview: This hands-on lab will help you practice using Higher-Order Functions (HOFs) to write cleaner, more declarative code. You'll transform imperative loops into elegant functional code and build practical data processing pipelines.
+Setup Instructions
+Before You Begin
+Open your browser's Developer Tools (F12 or right-click → Inspect)
+Go to the Console tab
+Have the Chapter 5 briefing document open for reference
+Exercise 1: From Imperative to Declarative
+Task 1.1: Transform Imperative Loops
+Convert these imperative (old-style) loops into declarative HOF solutions.
+
+// Sample data const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; const people = [ {name: 'Alice', age: 30, city: 'NYC'}, {name: 'Bob', age: 25, city: 'LA'}, {name: 'Charlie', age: 35, city: 'NYC'}, {name: 'Diana', age: 28, city: 'Chicago'} ]; // Challenge 1: Convert this imperative loop to use filter() // Old way: let evenNumbers = []; for (let i = 0; i < numbers.length; i++) { if (numbers[i] % 2 === 0) { evenNumbers.push(numbers[i]); } } // Your turn: Write the declarative version using filter() const evenNumbersDeclarative = numbers.filter(/* your code here */); // Challenge 2: Convert this imperative loop to use map() // Old way: let doubledNumbers = []; for (let i = 0; i < numbers.length; i++) { doubledNumbers.push(numbers[i] * 2); } // Your turn: Write the declarative version using map() const doubledNumbersDeclarative = numbers.map(/* your code here */); // Challenge 3: Convert this imperative loop to use reduce() // Old way: let sum = 0; for (let i = 0; i < numbers.length; i++) { sum += numbers[i]; } // Your turn: Write the declarative version using reduce() const sumDeclarative = numbers.reduce(/* your code here */, 0);
+Questions to Answer:
+
+Which version is shorter and easier to read?
+Which version is less prone to bugs?
+What happens if you forget the initial value in reduce()?
+Task 1.2: Extract Data from Objects
+Practice extracting specific data from arrays of objects using HOFs.
+
+// Using the people array from above, complete these tasks: // 1. Extract all names const names = people.map(/* your code here */); // 2. Find people over 30 const over30 = people.filter(/* your code here */); // 3. Find the first person from NYC const firstNYC = people.find(/* your code here */); // 4. Check if everyone is over 20 const allOver20 = people.every(/* your code here */); // 5. Check if anyone is from Chicago const hasChicago = people.some(/* your code here */); // Test your solutions console.log('Names:', names); console.log('Over 30:', over30); console.log('First NYC:', firstNYC); console.log('All over 20:', allOver20); console.log('Has Chicago:', hasChicago);
+Expected Results:
+
+names should be: ['Alice', 'Bob', 'Charlie', 'Diana']
+over30 should be: [{name: 'Alice', age: 30, city: 'NYC'}, {name: 'Charlie', age: 35, city: 'NYC'}]
+firstNYC should be: {name: 'Alice', age: 30, city: 'NYC'}
+allOver20 should be: true
+hasChicago should be: true
+Exercise 2: Chaining HOFs
+Task 2.1: Data Processing Pipeline
+Create a data processing pipeline using multiple HOFs chained together.
+
+// Sample data: Product inventory const products = [ {name: 'Laptop', price: 999, category: 'Electronics', inStock: true}, {name: 'Coffee Mug', price: 15, category: 'Kitchen', inStock: true}, {name: 'Smartphone', price: 699, category: 'Electronics', inStock: false}, {name: 'Book', price: 25, category: 'Books', inStock: true}, {name: 'Headphones', price: 199, category: 'Electronics', inStock: true}, {name: 'Desk Lamp', price: 45, category: 'Home', inStock: false} ]; // Challenge: Create a pipeline that: // 1. Filters for in-stock items only // 2. Filters for Electronics category only // 3. Maps to just the product names // 4. Joins the names with commas const result = products .filter(/* filter for in-stock items */) .filter(/* filter for Electronics category */) .map(/* extract just the names */) .join(', '); console.log('Available Electronics:', result); // Expected: "Laptop, Headphones"
+Hint: Remember that filter() and map() return new arrays, so you can chain them together!
+
+Task 2.2: Complex Data Analysis
+Use reduce() to perform complex calculations on the product data.
+
+// Challenge: Calculate the total value of in-stock inventory const totalValue = products .filter(/* filter for in-stock items */) .reduce(/* sum up the prices */, 0); console.log('Total inventory value: $' + totalValue); // Challenge: Find the most expensive product const mostExpensive = products.reduce(/* find the product with highest price */); console.log('Most expensive:', mostExpensive.name); // Challenge: Group products by category const groupedByCategory = products.reduce(/* group products by category */, {}); console.log('Products by category:', groupedByCategory);
+Expected Results:
+
+totalValue should be: 1078 (999 + 15 + 25 + 199)
+mostExpensive should be: {name: 'Laptop', price: 999, ...}
+groupedByCategory should group products by their category
+Exercise 3: Advanced HOF Challenges
+Task 3.1: Custom HOF Implementation
+Create your own Higher-Order Function to understand how they work internally.
+
+// Challenge: Implement your own map() function function myMap(array, callback) { // Your implementation here // Should return a new array with the results of calling callback on each element } // Test your implementation const testArray = [1, 2, 3, 4]; const doubled = myMap(testArray, x => x * 2); console.log('My map result:', doubled); // Should be [2, 4, 6, 8] // Challenge: Implement your own filter() function function myFilter(array, predicate) { // Your implementation here // Should return a new array with elements that pass the predicate test } // Test your implementation const evens = myFilter(testArray, x => x % 2 === 0); console.log('My filter result:', evens); // Should be [2, 4]
+Hint: Use a for loop inside your HOF to iterate through the array and apply the callback function to each element.
+
+Task 3.2: Async HOF Challenge
+Practice working with async functions and HOFs.
+
+// Simulate async operations function simulateAsyncOperation(data, delay) { return new Promise(resolve => { setTimeout(() => { resolve(data * 2); // Simulate some processing }, delay); }); } const asyncData = [1, 2, 3, 4, 5]; // Challenge: Process asyncData with async operations // ❌ This won't work as expected: asyncData.forEach(async item => { const result = await simulateAsyncOperation(item, 100); console.log('Processed:', result); }); // ✅ Your turn: Create a working async version async function processAsyncData() { // Use Promise.all() and map() to process all items const promises = asyncData.map(/* your code here */); const results = await Promise.all(promises); console.log('All processed:', results); } // Call your function processAsyncData();
+Important: Remember that standard HOFs don't wait for async operations. You need to use Promise.all() or create async-aware versions.
+
+Exercise 4: Real-World Application
+Task 4.1: E-commerce Data Processing
+Apply your HOF knowledge to a realistic e-commerce scenario.
+
+// E-commerce order data const orders = [ {id: 1, customer: 'Alice', items: ['laptop', 'mouse'], total: 1050, status: 'completed'}, {id: 2, customer: 'Bob', items: ['keyboard'], total: 75, status: 'pending'}, {id: 3, customer: 'Alice', items: ['headphones', 'webcam'], total: 250, status: 'completed'}, {id: 4, customer: 'Charlie', items: ['monitor'], total: 300, status: 'cancelled'}, {id: 5, customer: 'Bob', items: ['desk', 'chair'], total: 450, status: 'completed'} ]; // Challenge 1: Calculate total revenue from completed orders const totalRevenue = orders .filter(/* filter completed orders */) .reduce(/* sum the totals */, 0); console.log('Total revenue: $' + totalRevenue); // Challenge 2: Find customers who have made multiple orders const customerOrderCounts = orders .reduce(/* count orders per customer */, {}); const repeatCustomers = Object.entries(customerOrderCounts) .filter(/* find customers with more than 1 order */) .map(/* extract just the customer names */); console.log('Repeat customers:', repeatCustomers); // Challenge 3: Create a summary of order statuses const statusSummary = orders .reduce(/* count orders by status */, {}); console.log('Order status summary:', statusSummary);
+Expected Results:
+
+totalRevenue should be: 1750 (1050 + 250 + 450)
+repeatCustomers should be: ['Alice', 'Bob']
+statusSummary should show counts for each status
+Deliverables
+What to Submit
+Completed Code: All the code solutions you wrote for each task
+Console Output: Screenshots or text of your console results
+Answers to Questions: Your responses to the reflection questions throughout the lab
+Reflection: A brief paragraph about what you learned and how HOFs make code better
+Grading Criteria
+Evaluation Rubric
+Functionality (40%): All code runs without errors and produces correct results
+Code Quality (30%): Uses appropriate HOFs and follows functional programming principles
+Understanding (20%): Demonstrates comprehension of when and why to use different HOFs
+Reflection (10%): Thoughtful analysis of the benefits of declarative programming
+Bonus Challenge: Try to solve all the tasks without using any traditional for loops or while loops. Use only HOFs and functional programming techniques!
